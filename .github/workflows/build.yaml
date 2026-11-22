@@ -63,7 +63,7 @@ jobs:
       - name: Setup
         env:
           ANDROID_NDK_HOME: ${{ steps.build-ndk.outputs.ndk-path }}
-        run: dart setup.dart android --env stable -v
+        run: dart tool/package.dart android --env stable -v
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
