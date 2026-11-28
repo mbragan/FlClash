@@ -14,9 +14,9 @@ val localProperties = Properties().apply {
 }
 
 val releaseStoreFile = file("keystore.jks")
-val releaseStorePassword = localProperties.getProperty("storePassword")
-val releaseKeyAlias = localProperties.getProperty("keyAlias")
-val releaseKeyPassword = localProperties.getProperty("keyPassword")
+val releaseStorePassword = System.getenv("STORE_PASSWORD") ?: localProperties.getProperty("storePassword")
+val releaseKeyAlias = System.getenv("KEY_ALIAS") ?: localProperties.getProperty("keyAlias")
+val releaseKeyPassword = System.getenv("KEY_PASSWORD") ?: localProperties.getProperty("keyPassword")
 val hasReleaseSigning = releaseStoreFile.exists() &&
     releaseStorePassword != null &&
     releaseKeyAlias != null &&
